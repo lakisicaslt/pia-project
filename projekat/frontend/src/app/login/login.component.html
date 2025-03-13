@@ -1,0 +1,104 @@
+<div class="container mt-4">
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Username:</td>
+            <td>
+              <input type="text" name="username" [(ngModel)]="username" class="form-control">
+            </td>
+          </tr>
+          <tr>
+            <td>Password:</td>
+            <td>
+              <input type="password" name="password" [(ngModel)]="password" class="form-control">
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <button (click)="login()" class="btn btn-primary">Log In</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-danger">{{message}}</p>
+    
+    <p>Ukoliko nemas account, <a routerLink="/register">registruj se.</a></p>
+    <p>Ukoliko ste zaboravili lozinku, <a routerLink="/promenaLozinke">promeni lozinku.</a></p>
+    
+    <br><br><br>
+    <h2>Deo za neregistrovane:</h2>
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td><strong>Broj dekorisanih basti:</strong></td>
+            <td>{{baste.length}}</td>
+          </tr>
+          <tr>
+            <td><strong>Broj registrovanih vlasnika:</strong></td>
+            <td>{{vlasnici.length}}</td>
+          </tr>
+          <tr>
+            <td><strong>Broj registrovanih dekoratera:</strong></td>
+            <td>{{dekoratori.length}}</td>
+          </tr>
+          <tr>
+            <td><strong>Broj zakazanih poslova u poslednja 24h:</strong></td>
+            <td>{{jedanDan}}</td>
+          </tr>
+          <tr>
+            <td><strong>Broj zakazanih poslova u poslednjih 7 dana:</strong></td>
+            <td>{{sedamDana}}</td>
+          </tr>
+          <tr>
+            <td><strong>Broj zakazanih poslova u poslednjih 30 dana:</strong></td>
+            <td>{{tridesetDana}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  
+    <br>
+    <div class="form-group">
+      <label for="ime">Ime firme:</label>
+      <input id="ime" [(ngModel)]="ime" name="ime" class="form-control">
+    </div>
+    
+    <div class="form-group">
+      <label for="adresa">Adresa firme:</label>
+      <input id="adresa" [(ngModel)]="adresa" name="adresa" class="form-control">
+    </div>
+    
+    <button (click)="pretraziFirme()" class="btn btn-primary">Pretrazi</button>
+    
+    <br><br>
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="sortFirme('ime')">Ime firme</th>
+            <th (click)="sortFirme('adresa')">Adresa</th>
+            <th>Zaposleni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let firma of firme">
+            <td>{{firma?.ime}}</td>
+            <td>{{firma?.adresa}}</td>
+            <td>
+              <ul *ngIf="firma?.zaposleni?.length >= 2; else noEmployees">
+                <li *ngFor="let zaposleni of firma?.zaposleni">{{zaposleni.ime}} {{zaposleni.prezime}}</li>
+              </ul>
+              <ng-template #noEmployees>Nema dovoljno zaposlenih</ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

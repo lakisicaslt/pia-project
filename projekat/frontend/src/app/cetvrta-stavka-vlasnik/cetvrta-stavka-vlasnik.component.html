@@ -1,0 +1,90 @@
+<div class="container mt-4">
+  <a routerLink="/owner" class="btn btn-secondary mb-3">Meni</a>
+  <h2>Privatne bašte</h2>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum izrade</th>
+        <th>Broj bazena</th>
+        <th>Dugme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of privatneBaste">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brBazena}}</td>
+        <td *ngIf="prosloSest(k.datum_vreme) && k.renoviranje == false">
+          <button class="btn btn-warning btn-sm" (click)="renoviranjePrivatnu(k.datumZakazivanja)">Zakazi servisiranje!</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Restoranske bašte</h2>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum izrade</th>
+        <th>Broj fontana</th>
+        <th>Dugme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of restoranskeBaste">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brFontana}}</td>
+        <td *ngIf="prosloSest(k.datum_vreme) && k.renoviranje != true">
+          <button class="btn btn-warning btn-sm" (click)="renoviranjeRestoransku(k.datumZakazivanja)">Zakazi servisiranje!</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <p>{{message}}</p>
+
+  <br>
+  <h2>Trenutno na servisiranju:</h2>
+  <h3>Privatni:</h3>
+
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum izrade</th>
+        <th>Broj bazena</th>
+        <th>Ime firme:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of privatniRenovirani">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brBazena}}</td>
+        <td>{{k.imeFirme}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Restoranske:</h3>
+
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum zakazivanja prvobitnog</th>
+        <th>Broj fontana</th>
+        <th>Ime firme:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of restoranskiRenovirani">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brFontana}}</td>
+        <td>{{k.imeFirme}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

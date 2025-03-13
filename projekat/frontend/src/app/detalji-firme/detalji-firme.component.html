@@ -1,0 +1,104 @@
+<div class="container">
+  <a routerLink="/owner" class="btn btn-secondary mb-3">Meni</a>
+
+  <h2>Podaci o firmi:</h2>
+  <table class="table table-striped table-responsive">
+    <tr>
+      <th>Ime firme:</th>
+      <td>{{firma?.ime}}</td>
+    </tr>
+    <tr>
+      <th>Adresa:</th>
+      <td>{{firma?.adresa}}</td>
+    </tr>
+    <tr>
+      <th>Spisak usluga:</th>
+      <td>
+        <ul>
+          <li *ngFor="let usluga of firma?.usluge">{{usluga.naziv}}: {{usluga.cena}}</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Lokacija:</th>
+      <td>{{firma?.lokacija}}</td>
+    </tr>
+    <tr>
+      <th>Kontakt osoba:</th>
+      <td>{{firma?.kontakt_osoba}}</td>
+    </tr>
+    <tr>
+      <th>Zaposleni:</th>
+      <td>
+        <ul *ngIf="firma?.zaposleni?.length >= 2; else noEmployees">
+          <li *ngFor="let zaposleni of firma?.zaposleni">{{zaposleni.ime}} {{zaposleni.prezime}}</li>
+        </ul>
+        <ng-template #noEmployees>Nema dovoljno zaposlenih</ng-template>
+      </td>
+    </tr>
+    <tr>
+      <th>Datum pocetka odmora:</th>
+      <td>{{firma?.datum_pocetka}}</td>
+    </tr>
+    <tr>
+      <th>Datum kraja odmora:</th>
+      <td>{{firma?.datum_kraja}}</td>
+    </tr>
+  </table>
+  
+  <form>
+    <h1>Zakazivanje:</h1>
+    <div *ngIf="currentStep == 1" class="form-group">
+      <h2>Korak 1: Osnovni podaci</h2>
+      <input type="datetime-local" class="form-control" placeholder="Datum i vreme" [(ngModel)]="datum_vreme" name="datum_vreme">
+      <input type="text" class="form-control" placeholder="Ukupna kvadratura baste" [(ngModel)]="kvadratura_baste" name="kvadratura_baste">
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="tip" [(ngModel)]="tip" value="privatna">Privatna
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="tip" [(ngModel)]="tip" value="restoranska">Restoranska
+      </div>
+      <button type="button" class="btn btn-primary" (click)="nextStep()">Sledeći korak</button>
+    </div>
+
+    <div *ngIf="currentStep == 2" class="form-group">
+      <h2>Korak 2: Privatna basta</h2>
+      <input type="text" class="form-control" placeholder="Kvadratura pod bazenom" [(ngModel)]="kvadratura_bazen" name="kvadratura_bazen">
+      <input type="text" class="form-control" placeholder="Kvadratura pod zelenilom" [(ngModel)]="kvadratura_zelenilo" name="kvadratura_zelenilo">
+      <input type="text" class="form-control" placeholder="Kvadratura pod inventarom" [(ngModel)]="kvadratura_inventar" name="kvadratura_inventar">
+      
+      <button type="button" class="btn btn-secondary" (click)="prevStep()">Prethodni korak</button>
+      <button type="button" class="btn btn-success" (click)="onSubmit()">Završi prijavu</button>
+    </div>
+
+    <div *ngIf="currentStep == 3" class="form-group">
+      <h2>Korak 2: Restoranska basta</h2>
+      <input type="text" class="form-control" placeholder="Kvadratura pod fontanom" [(ngModel)]="kvadratura_fontana" name="kvadratura_fontana">
+      <input type="text" class="form-control" placeholder="Kvadratura pod zelenilom" [(ngModel)]="kvadratura_zelenilo" name="kvadratura_zelenilo">
+      <input type="text" class="form-control" placeholder="Broj inventarom" [(ngModel)]="broj_inventar" name="broj_inventar">
+      <textarea class="form-control" name="opis" [(ngModel)]="tekst"></textarea>
+      
+      <div *ngFor="let usluga of firma?.usluge">
+        <div class="form-check">
+          <input 
+            type="checkbox" 
+            class="form-check-input"
+            (change)="toggleUsluga(usluga)" 
+            [checked]="isSelected(usluga)"
+            name="usluga_{{usluga.naziv}}">
+          <label class="form-check-label">{{usluga.naziv}}: {{usluga.cena}}</label>
+        </div>
+      </div>
+      
+      <button type="button" class="btn btn-secondary" (click)="prevStep()">Prethodni korak</button>
+      <button type="button" class="btn btn-success" (click)="onSubmit()">Završi prijavu</button>
+    </div>
+  </form>
+  <br>
+  <p>{{message}}</p>
+</div>
+
+
+
+<button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+

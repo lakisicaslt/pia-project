@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <a routerLink="/decorator" class="btn btn-secondary">Meni</a>
+  <h3>Privatne bašte</h3>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum izrade</th>
+        <th>Broj bazena</th>
+        <th>Dugme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of privatneBaste">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brBazena}}</td>
+        <td *ngIf="k.obradjen!=null">
+          <button class="btn btn-primary btn-sm" (click)="prihvatiPrivatne(k.datumZakazivanja)">Prihvati</button>
+          <button class="btn btn-danger btn-sm" (click)="odbijPrivatne(k.datumZakazivanja)">Odbij</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Restoranske bašte</h3>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Datum izrade</th>
+        <th>Broj fontana</th>
+        <th>Dugme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let k of restoranskeBaste">
+        <td>{{k.datum_vreme}}</td>
+        <td>{{k.brFontana}}</td>
+        <td *ngIf="k.obradjen!=null">
+          <button class="btn btn-primary btn-sm" (click)="prihvatiRestoranske(k.datumZakazivanja)">Prihvati</button>
+          <button class="btn btn-danger btn-sm" (click)="odbijRestoranske(k.datumZakazivanja)">Odbij</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <label for="tekst">Unesite razlog odbijanja:</label>
+          <input type="text" class="form-control" name="tekst" [(ngModel)]="tekst">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+  <button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+
+  <br>
+  <p class="text-info">{{poruka}}</p>
+</div>
+
+

@@ -1,0 +1,81 @@
+<div class="container mt-4">
+  <h2>Azuriraj korisnika:</h2>
+  <form>
+    <div class="form-group">
+      <label for="ime">Ime:</label>
+      <input type="text" class="form-control" name="ime" [(ngModel)]="ime">
+    </div>
+
+    <div class="form-group">
+      <label for="prezime">Prezime:</label>
+      <input type="text" class="form-control" name="prezime" [(ngModel)]="prezime">
+    </div>
+
+    <div class="form-group">
+      <label for="pol">Pol:</label><br>
+      <div class="form-check form-check-inline">
+        <input type="radio" name="pol" [(ngModel)]="pol" value="M" class="form-check-input"> 
+        <label class="form-check-label">M</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="radio" name="pol" [(ngModel)]="pol" value="Ž" class="form-check-input"> 
+        <label class="form-check-label">Ž</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="adresa">Adresa:</label>
+      <input type="text" class="form-control" name="adresa" [(ngModel)]="adresa">
+    </div>
+
+    <div class="form-group">
+      <label for="kontakt_telefon">Kontakt telefon:</label>
+      <input type="text" class="form-control" name="kontakt_telefon" [(ngModel)]="kontakt_telefon">
+    </div>
+
+    <div class="form-group">
+      <label for="email_adresa">Email adresa:</label>
+      <input type="email" class="form-control" name="email_adresa" [(ngModel)]="email_adresa">
+    </div>
+
+    <div class="form-group">
+      <label for="profilna_slika">Profilna slika:</label>
+      <input type="file" class="form-control-file"name = "profilna_slika"  (change)="onFileChange($event)">
+      <small class="text-danger">{{imageError}}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="broj_kreditne_kartice">Broj kreditne kartice:</label>
+      <input type="text" class="form-control" name="broj_kreditne_kartice" [(ngModel)]="broj_kreditne_kartice" (input)="validateCard()">
+      <img *ngIf="cardIcon" [src]="cardIcon" alt="Card Type Icon" class="mt-2" width="50px" height="30px">
+      <small class="text-danger" *ngIf="!isCardValid">{{ errorMessage }}</small>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" class="form-control" name="username" [(ngModel)]="username">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="password">
+    </div>
+
+    <div class="form-group">
+      <label for="tip">Tip:</label><br>
+      <div class="form-check form-check-inline">
+        <input type="radio" name="tip" [(ngModel)]="tip" value="Dekorator" class="form-check-input"> 
+        <label class="form-check-label">Dekorator</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input type="radio" name="tip" [(ngModel)]="tip" value="Vlasnik" class="form-check-input"> 
+        <label class="form-check-label">Vlasnik</label>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="azuriraj()">Azuriraj</button>
+  </form>
+
+  <br>
+  <p class="text-success">{{message}}</p>
+</div>

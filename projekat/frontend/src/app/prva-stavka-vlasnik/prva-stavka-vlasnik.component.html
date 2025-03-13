@@ -1,0 +1,55 @@
+<div class="container mt-4">
+    <a routerLink="/owner" class="btn btn-secondary mb-3">Meni</a>
+  
+    <h2>Dobrodošli, {{user.ime}}:</h2>
+  
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Ime:</td>
+            <td>{{user.ime}}</td>
+          </tr>
+          <tr>
+            <td>Prezime:</td>
+            <td>{{user.prezime}}</td>
+          </tr>
+          <tr>
+            <td>Adresa:</td>
+            <td>{{user.adresa}}</td>
+          </tr>
+          <tr>
+            <td>Kontakt telefon:</td>
+            <td>{{user.kontakt_telefon}}</td>
+          </tr>
+          <tr>
+            <td>Email adresa:</td>
+            <td>{{user.email_adresa}}</td>
+          </tr>
+          <tr>
+            <td>Profilna slika:</td>
+            <td>
+              <img [src]="user.profilna_slika" alt="Profile Picture" class="img-fluid" style="width: 50px; height: 50px;">
+            </td>
+          </tr>
+          <tr>
+            <td>Broj kreditne kartice:</td>
+            <td>{{user.broj_kreditne_kartice}}</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class="btn btn-primary" (click)="azuriraj(user.username)">Azuriraj</button>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <p>{{message}}</p>
+  </div>
+  

@@ -1,0 +1,29 @@
+# Node.js dependencies
+/node_modules/
+/npm-debug.log
+/package-lock.json
+
+# Angular build output
+/dist/
+/out-tsc/
+/.angular/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files (optional, if you have sensitive data or different configurations)
+*.env
+
+# IDE and editor specific files
+.idea/
+.vscode/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# Miscellaneous
+*.tgz

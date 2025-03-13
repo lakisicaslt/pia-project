@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <a routerLink="/owner" class="btn btn-secondary mb-3">Meni</a>
+  <h2>Spisak zakazivanja:</h2>
+
+  <h3>Privatne bašte:</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Datum zakazivanja</th>
+          <th>Datum izrade</th>
+          <th>Naziv firme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let k of vlasnik.privatneBaste">
+          <td>{{k.datumZakazivanja}}</td>
+          <td>{{k.datum_vreme}}</td>
+          <td>{{k.imeFirme}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Restoranske bašte:</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Datum zakazivanja</th>
+          <th>Datum izrade</th>
+          <th>Naziv firme</th>
+          <th>Trazene usluge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let k of vlasnik.restoranskeBaste">
+          <td>{{k.datumZakazivanja}}</td>
+          <td>{{k.datum_vreme}}</td>
+          <td>{{k.imeFirme}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let zaposleni of k.usluge">{{zaposleni.naziv}}: {{zaposleni.cena}}</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

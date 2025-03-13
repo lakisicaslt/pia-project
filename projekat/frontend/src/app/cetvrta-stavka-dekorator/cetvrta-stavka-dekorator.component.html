@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <a routerLink="/decorator" class="btn btn-secondary">Meni</a>
+  <h2 class="text-center">Statistika poslova po mesecima za dekoratera: {{vlasnik.username}}</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <canvas #myChart></canvas>
+    </div>
+  </div>
+  <hr>
+
+  <h2 class="text-center">Statistika rada zaposlenih za firmu: {{vlasnik.imeFirme}}</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <canvas #pieChart></canvas>
+    </div>
+  </div>
+  <hr>
+
+  <h2 class="text-center">Statistika po danima: {{vlasnik.imeFirme}}</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <canvas #histogramChart width="400" height="400"></canvas> 
+    </div>
+  </div>
+</div>
+
+<br>
+<button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>

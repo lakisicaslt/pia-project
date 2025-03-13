@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2>Admin LogIn forma:</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Username:</td>
+          <td>
+            <input type="text" name="username" [(ngModel)]="username" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" name="password" [(ngModel)]="password" class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            <button (click)="login()" class="btn btn-primary">Log In</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <p class="text-danger">{{message}}</p>
+</div>

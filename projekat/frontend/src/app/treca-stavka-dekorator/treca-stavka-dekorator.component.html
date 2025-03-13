@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <header>
+    <a routerLink="/decorator" class="btn btn-secondary">Meni</a>
+  </header>
+  
+
+  <h2>Privatne bašte</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Datum izrade</th>
+          <th>Broj bazena</th>
+          <th>Procenjeno vreme zavrsetka</th>
+          <th>Dugme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let k of privatneBaste">
+          <td>{{k.datum_vreme}}</td>
+          <td>{{k.brBazena}}</td>
+          <td><input type="datetime-local" class="form-control" [(ngModel)]="k.procenaZavrsetka"></td>
+          <td *ngIf="k.obradjen!=null">
+            <button class="btn btn-primary btn-sm" (click)="prihvatiPrivatnaOdrzavanja(k)">Prihvati</button>
+            <button class="btn btn-danger btn-sm" (click)="odbijPrivatnaOdrzavanja(k)">Odbij</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Restoranske bašte</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Datum izrade</th>
+          <th>Broj fontana</th>
+          <th>Procenjeno vreme zavrsetka</th>
+          <th>Dugme</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let k of restoranskeBaste">
+          <td>{{k.datum_vreme}}</td>
+          <td>{{k.brFontana}}</td>
+          <td><input type="datetime-local" class="form-control" [(ngModel)]="k.procenaZavrsetka"></td>
+          <td *ngIf="k.obradjen!=null">
+            <button class="btn btn-primary btn-sm" (click)="prihvatiRestoranskaOdrzavanja(k)">Prihvati</button>
+            <button class="btn btn-danger btn-sm" (click)="odbijRestoranskaOdrzavanja(k)">Odbij</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="odjavi()">Odjavi se</button>
+  <br>
+
+  <p class="mt-4">{{poruka}}</p>
+</div>

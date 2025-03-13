@@ -1,0 +1,12 @@
+{
+  "bazen": {"x": 100, "y": 150, "width": 200, "height": 100, "color": "blue"},
+  "fontana": {"x": 200, "y": 200, "radius": 30, "color": "lightblue"},
+  "trava": [
+    {"x": 10, "y": 10, "width": 50, "height": 50, "color": "green"},
+    {"x": 70, "y": 10, "width": 50, "height": 50, "color": "green"}
+  ],
+  "stolovi": [
+    {"x": 100, "y": 300, "width": 40, "height": 20, "color": "gray"},
+    {"x": 160, "y": 300, "width": 40, "height": 20, "color": "gray"}
+  ]
+}

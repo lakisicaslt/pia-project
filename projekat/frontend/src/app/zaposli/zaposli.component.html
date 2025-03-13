@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <h2>Spisak dekoratora:</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Korisnicko Ime</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Pol</th>
+          <th>Adresa</th>
+          <th>Kontakt telefon</th>
+          <th>Dugmad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let k of dekoratori">
+          <td>{{k.username}}</td>
+          <td>{{k.ime}}</td>
+          <td>{{k.prezime}}</td>
+          <td>{{k.pol}}</td>
+          <td>{{k.adresa}}</td>
+          <td>{{k.kontakt_telefon}}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="zaposli(k.username)">Zaposli</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <p>{{message}}</p>
+</div>
